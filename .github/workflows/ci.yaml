@@ -8,26 +8,37 @@ on:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: checkout source code
-        uses: actions/checkout@v4
+      - name: Checkout source code
+        uses: actions/checkout@main
       - name: Use Node.js 20.x
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@main
         with:
           node-version: 20.x
           cache: "yarn"
-      - name: install packages
+      - name: Install packages
         run: yarn install
-      - name: cache npm dependencies
-        uses: actions/cache@v4
+      - name: Cache npm dependencies
+        uses: actions/cache@main
         with:
           path: ~/.npm
           key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-cache-
-      - name: upload artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@main
         with:
-          name: webpack artifacts
+          name: webpack
           path: public/
+  test:
+    name: Download
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: 
+        uses: actions/download-artifact@main
+        with:
+          name: webpack
+      - run: ls -lh public
