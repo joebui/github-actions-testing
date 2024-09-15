@@ -1,3 +1,6 @@
 {
-  "name": "testing"
+  "name": "testing",
+  "dependencies": {
+    "debug": "^4.3.7"
+  }
 }
