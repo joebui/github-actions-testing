@@ -43,3 +43,7 @@ jobs:
           name: webpack
       - name: Check output
         run: ls -lh
+      - name: Custom JS job
+        uses: ./.github/actions/custom-job
+        with:
+          name: Joe
