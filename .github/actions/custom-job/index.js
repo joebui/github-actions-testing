@@ -1,3 +1,7 @@
 const core = require("@actions/core");
 
-console.log(`Input is: ${core.getInput("name")}`);
+try {
+  console.log(`Input is: ${core.getInput("name")}`);
+} catch (error) {
+  core.setFailed(error.message);
+}
