@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
         uses: actions/checkout@main
@@ -34,7 +34,7 @@ jobs:
           path: public/
   test:
     name: Download
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Download artifact
